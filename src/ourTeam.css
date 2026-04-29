@@ -1,0 +1,105 @@
+html {
+  scroll-behavior: smooth;
+  margin: 0;
+}
+
+body{
+  margin: 0px;
+}
+
+#root{
+  margin: 0px;
+}
+#our-team {
+  background: linear-gradient(white, rgba(27, 79, 216, 0.5));
+  margin: 0px;
+  padding: 1rem;
+  /* background-color: rgba(27, 79, 216, 0.5); */
+}
+
+/* @keyframes slideUp {
+    0%{
+        transform: translateY(1000000px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+} */
+
+.our-team-top-right {
+  padding: 1rem;
+}
+
+.our-team-top-right h4 {
+  font-size: 2rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.our-team-top-right p {
+  text-align: center;
+}
+
+.our-team-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: solid 2px var(--primary-color);
+  height: fit-content;
+  width: fit-content;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+  color: var(--primary-color);
+}
+
+.card-top img {
+  height: 15rem;
+  border-radius: 10px;
+}
+
+.card-bottom h6 {
+  font-size: 1.5rem;
+  margin-top: 0px;
+}
+
+.practice-date {
+  font-size: 0.5rem;
+}
+
+.practice-and-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.certifcations {
+  display: none;
+  padding: 0.2rem 1rem;
+}
+
+.certifcations h6 {
+  margin: 0px;
+}
+
+.arrow-down {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+.arrow-down img {
+  height: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .our-team-bottom {
+    flex-direction: column;
+  }
+}

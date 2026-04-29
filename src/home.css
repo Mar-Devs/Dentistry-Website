@@ -1,0 +1,89 @@
+html {
+  font-family: "IBM";
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  /* overflow-x: hidden; */
+  animation: rootSlideIn 1.5s;
+}
+
+@keyframes rootSlideIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@font-face {
+  font-family: "IBM";
+  src: url("./assests/IBMPlexSansArabic-Regular.ttf");
+}
+
+.home-body-left img {
+  height: 35rem;
+}
+
+.home-body {
+  display: flex;
+  align-items: center;
+}
+
+.home-body-right button {
+  background-color: white;
+  border: solid 1px var(--primary-color);
+  padding: 1rem;
+  width: 80%;
+  align-self: center;
+}
+
+.home-body-right button {
+  padding: 1rem 2rem;
+  font-size: 2rem;
+}
+
+.home-body-right button:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.home-body-right button img {
+  height: 2rem;
+  margin-right: 1rem;
+}
+
+@media (min-width: 1025px) {
+  .home-body-right p {
+    font-size: 3rem;
+    width: 20ch;
+  }
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
+  .home-body {
+    flex-direction: column;
+  }
+
+  .home-body-right p {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .home-body-left img {
+    height: 16.5rem;
+  }
+
+  .home-body-right {
+    display: flex;
+    flex-direction: column;
+  }
+}
