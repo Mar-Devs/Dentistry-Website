@@ -34,7 +34,7 @@ export function NavBar() {
             <a href="#our-team">زبائننا</a>
           </li>
           <li className="contact-us-mobile" id="contact-us-mobile">
-            <a href="">تواصل معنا</a>
+            <a href="#contact-us">تواصل معنا</a>
           </li>
         </ul>
       </div>
@@ -73,8 +73,8 @@ export function NavBar() {
               <a href="">زبائننا</a>
             </li>
             <li>
-              <button className="contact-us">تواصل معنا</button>
-            </li>
+              <button className="contact-us"><a href="#contact-us">تواصل معنا</a></button>
+            </li>  
           </ul>
         </nav>
       </header>

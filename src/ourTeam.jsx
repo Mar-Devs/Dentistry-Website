@@ -63,8 +63,8 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
   const [open, setOpen] = useState(false)
   function certDisplay() {
     if(open === false){
-    const certDiv = document.getElementById({drName});
-    const btn = document.getElementById({drAbout});
+    const certDiv = document.querySelector(".certifcations");
+    const btn = document.querySelector(".arrow-down");
     btn.addEventListener("click", () => {
       certDiv.style.display = "flex";
       setOpen(true)
@@ -91,7 +91,7 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
           <p dir="rtl">{drAbout}</p>
           <div className="practice-and-more">
             <button className="arrow-down" onClick={certDisplay}>
-              <img src={arrowDownwardIcon} alt="downward-arrow" id={drAbout}/>
+              <img src={arrowDownwardIcon} alt="downward-arrow" onClick={() => setOpen(!open)}/>
             </button>
             <p className="practice-date" dir="rlt">
               {practicingSince}
@@ -99,7 +99,8 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
           </div>
         </div>
         </div>
-             <div className="certifcations" id={drName}>
+    {open && (
+          <div className="certifcations">
             <h6 dir="rtl">شهادات:</h6>
             <ul>
               {certifcates.map((certifcation) => (
@@ -109,6 +110,7 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
               ))}
             </ul>
           </div>
+        )}
       </div>
     </>
   );

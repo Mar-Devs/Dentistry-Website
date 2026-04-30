@@ -5,6 +5,7 @@ import { Home } from "./home";
 import { StatsCounter } from "./statsCounter.jsx";
 import { OurTeam } from "./ourTeam";
 import { Services } from "./services";
+import { DentalBooking } from "./contactForm.jsx";
 import { Footer } from "./footer";
 
 createRoot(document.getElementById("root")).render(
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")).render(
     {/* <StatsCounter/> */}
     <Services />
     <OurTeam />
+    <DentalBooking/>
     <Footer/>
   </StrictMode>,
 );
