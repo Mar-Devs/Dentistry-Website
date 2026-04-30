@@ -82,11 +82,15 @@ body{
 
 .certifcations {
   display: none;
-  padding: 0.2rem 1rem;
+  flex-direction: column;
+  padding: 0.2rem 1.5rem;
+  background-color: rgba(27, 79, 216, 0.2);
+  border-radius: 10px;
 }
 
 .certifcations h6 {
   margin: 0px;
+  font-size: 1rem;
 }
 
 .arrow-down {

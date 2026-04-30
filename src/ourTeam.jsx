@@ -3,13 +3,14 @@ import "./ourTeam.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import arrowDownwardIcon from "./assests/arrow-downward.svg";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function OurTeam() {
-  const certifcates = ["شهادت طب اسنانو جامعة الكوفه"];
+  const certifcates1 = ["شهادت طب اسنان جامعة الكوفه"];
+  const certifcates2 = ["شهادت طب اسنان جامعة الكوفه"];
   const container = useRef();
   useGSAP(() => {
     gsap.from("#our-team", {
@@ -38,16 +39,18 @@ export function OurTeam() {
           </div>
           <div className="our-team-bottom">
             <AboutCard
+            drNameDiv = "humam"
               drName="دكتور همام الاسدي"
               drAbout="متخصص زرع"
               practicingSince="يمارس منذ 2018"
-              certifcates={certifcates}
+              certifcates={certifcates1}
             />
             <AboutCard
+            drNameDiv = "sarah"
               drName="دكتوره ساره علي"
               drAbout="متخصصق تقويم"
               practicingSince="تمارس منذ 2018"
-              certifcates={certifcates}
+              certifcates={certifcates2}
             />
           </div>
         </div>
@@ -57,18 +60,29 @@ export function OurTeam() {
 }
 
 function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
+  const [open, setOpen] = useState(false)
   function certDisplay() {
-    const bool = false;
+    if(open === false){
+    const certDiv = document.getElementById({drName});
+    const btn = document.getElementById({drAbout});
+    btn.addEventListener("click", () => {
+      certDiv.style.display = "flex";
+      setOpen(true)
+    });
+  } else if(open === true){
     const certDiv = document.querySelector(".certifcations");
     const btn = document.querySelector(".arrow-down");
 
     btn.addEventListener("click", () => {
-      certDiv.style.display = "flex";
+      certDiv.style.display = "none";
+      setOpen(false)
     });
+  }
   }
   return (
     <>
       <div className="card">
+        <div className="card-top-and-bottom">
         <div className="card-top">
           <img src={maleProfile} alt="" />
         </div>
@@ -77,13 +91,15 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
           <p dir="rtl">{drAbout}</p>
           <div className="practice-and-more">
             <button className="arrow-down" onClick={certDisplay}>
-              <img src={arrowDownwardIcon} alt="downward-arrow" />
+              <img src={arrowDownwardIcon} alt="downward-arrow" id={drAbout}/>
             </button>
             <p className="practice-date" dir="rlt">
               {practicingSince}
             </p>
           </div>
-          <div className="certifcations">
+        </div>
+        </div>
+             <div className="certifcations" id={drName}>
             <h6 dir="rtl">شهادات:</h6>
             <ul>
               {certifcates.map((certifcation) => (
@@ -93,7 +109,6 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
               ))}
             </ul>
           </div>
-        </div>
       </div>
     </>
   );

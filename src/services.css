@@ -80,8 +80,14 @@
   overflow: auto;
   gap: 1rem;
   max-width: 100vh;
+  overflow: hidden;
 
- scrollbar-color: var(--primary-color);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.services::-webkit-scrollbar {
+  display: none;
 }
 .service-info {
   display: none;

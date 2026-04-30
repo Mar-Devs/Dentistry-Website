@@ -58,6 +58,12 @@ html {
   margin-right: 1rem;
 }
 
+@media (max-width: 1400px){
+  .home-body{
+    flex-direction: column;
+  }
+}
+
 @media (min-width: 1025px) {
   .home-body-right p {
     font-size: 3rem;
