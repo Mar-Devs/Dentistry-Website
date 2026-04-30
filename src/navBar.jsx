@@ -1,4 +1,7 @@
 import "./navBar.css";
+import menuIcon from "./assests/menuIcon.svg"
+import closeIcon from ".//assests/closeIcon.svg"
+import favIcon from "./sassests/favIcon.png"
 
 export function NavBar() {
   function showMobileNav() {
@@ -19,7 +22,7 @@ export function NavBar() {
   return (
     <>
       <div className="mobile-nav">
-        <img className="close-icon" src="..\public\closeIcon.svg" alt="close" />
+        <img className="close-icon" src={closeIcon} alt="close" />
         <ul className="mobile-ul">
           <li>
             <a href="">من نحن</a>
@@ -48,7 +51,7 @@ export function NavBar() {
             />
           </a>
           <img
-            className="menu-icon"
+            className={menuIcon}
             src="..\public\menuIcon.svg"
             alt="menu"
             onClick={showMobileNav}

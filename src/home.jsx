@@ -1,5 +1,6 @@
 import "./home.css"
 import dentist from './assests/dentist.png'
+import calenderIcon from "./assests/calenderIcon.svg"
 export function Home(){
     return(
         <>
@@ -10,7 +11,7 @@ export function Home(){
                 </div>
                 <div className="home-body-right">
                     <p dir="rtl">عياده متخصصه في مجال تعويض الاسنان الثابته و المتحركه</p>
-                    <button><img src="../public/calenderIcon.svg" alt="calendar" />احجز الان</button>
+                    <button><img src={calenderIcon}alt="calendar" />احجز الان</button>
                 </div>
             </div>
         </section>
