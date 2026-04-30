@@ -51,8 +51,8 @@ export function NavBar() {
             />
           </a>
           <img
-            className={menuIcon}
-            src="..\public\menuIcon.svg"
+            className="menu-icon"
+            src={menuIcon}
             alt="menu"
             onClick={showMobileNav}
           />
