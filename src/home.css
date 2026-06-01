@@ -15,6 +15,52 @@ html {
   #ffffff;
 } */
 
+/* =============================================
+   Dental Clinic Hero — Background CSS
+   ============================================= */
+
+#root {
+  background-color: #f0f6fb; /* light blue-white base */
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  direction: rtl;
+}
+
+/* Large soft circle — bottom right (behind stats) */
+#root::before {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  right: -60px;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background-color: var(--primary-color); /* medium blue tint */
+  opacity: 0.55;
+  z-index: 0;
+}
+
+/* Smaller soft circle — upper left area */
+#root::after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 60px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background-color: var(--primary-color); /* lighter blue tint */
+  opacity: 0.45;
+  z-index: 0;
+}
+
+/* All direct children should sit above the circles */
+#root > * {
+  position: relative;
+  z-index: 1;
+}
+
 @keyframes rootSlideIn {
   0% {
     opacity: 0;
@@ -38,11 +84,11 @@ html {
 
 .home-body {
   display: flex;
-  align-items: center;
+  flex-direction: row-reverse;
 }
 
 .home-body-right button {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.2);
   border: solid 1px var(--primary-color);
   padding: 1rem;
   width: 80%;
@@ -56,15 +102,25 @@ html {
 
 .home-body-right button:hover {
   transform: translateY(10px);
-}  
+}
 
 .home-body-right button img {
   height: 2rem;
   margin-right: 1rem;
 }
 
-@media (max-width: 1400px){
-  .home-body{
+#home {
+  padding: 2rem;
+}
+
+.home-body-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1400px) {
+  .home-body {
     flex-direction: column;
   }
 }
