@@ -3,11 +3,11 @@ html {
   margin: 0;
 }
 
-body{
+body {
   margin: 0px;
 }
 
-#root{
+#root {
   margin: 0px;
 }
 #our-team {
@@ -38,6 +38,26 @@ body{
 
 .our-team-top-right p {
   text-align: center;
+}
+
+.our-team-top-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.our-team-top-left h6{
+      display: inline-block;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--blue-bright);
+    background: rgba(37,99,235,0.09);
+    border: 1px solid var(--border);
+    padding: 5px 18px;
+    border-radius: 100px;
+    margin-bottom: 16px;
 }
 
 .our-team-bottom {
@@ -102,8 +122,15 @@ body{
   height: 2rem;
 }
 
+.our-team-top-right h4 {
+  color: var(--text-color);
+  font-weight: 900;
+}
+
 @media (max-width: 1024px) {
   .our-team-bottom {
     flex-direction: column;
   }
 }
+
+

@@ -477,7 +477,7 @@ export function DentalBooking({
               <ToothLeft />
               <ToothRight />
             </div>
-            <div className="db-badge">استشارة</div>
+            <div className="db-badge">تواصل معنا</div>
             <h1 className="db-h1">احجز خطوتك الأولى</h1>
             <p className="db-subtitle">
               اختر تاريخك المفضل ونوع العلاج،

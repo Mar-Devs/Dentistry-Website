@@ -74,9 +74,9 @@ export function Service({ servicePhoto, serviceName, serviceDescription }) {
         <div className="service-display">
           <img className="service-img" src={servicePhoto} alt="" />
           <p dir="rtl">{serviceName}</p>
-          <button>
+          {/* <button>
             <img className="arrow-img" src={arrowRight} alt="" />
-          </button>
+          </button> */}
         </div>
         <div className="service-info">
           <h6 dir="rtl">{serviceName}</h6>

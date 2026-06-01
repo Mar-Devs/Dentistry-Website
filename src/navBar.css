@@ -1,5 +1,6 @@
 :root {
   --primary-color: #1b4fd8;
+  --text-color: #0a2a6e;
 }
 
 html {
@@ -165,6 +166,9 @@ ul li a:hover {
 }
 
 @media (max-width: 1024px) {
+  heading{
+    padding: 1rem;
+  }
   .desktop-ul {
     display: none;
   }

@@ -49,9 +49,8 @@ html {
 }
 
 .home-body-right button:hover {
-  background-color: var(--primary-color);
-  color: white;
-}
+  transform: translateY(10px);
+}  
 
 .home-body-right button img {
   height: 2rem;
