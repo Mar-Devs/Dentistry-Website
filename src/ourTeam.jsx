@@ -48,7 +48,7 @@ export function OurTeam() {
             <AboutCard
             drNameDiv = "sarah"
               drName="دكتوره ساره علي"
-              drAbout="متخصصق تقويم"
+              drAbout="متخصصة تقويم"
               practicingSince="تمارس منذ 2018"
               certifcates={certifcates2}
             />

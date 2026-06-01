@@ -31,7 +31,7 @@ export function Services() {
           <h6 dir="rtl">خدماتنا</h6>
           <h4 dir="rtl">عنايه احترافيه لكل ابتسامه</h4>
           <p className="blurb" dir="rtl">
-            نوفر مدى منالخدمات, كل خدمه مصممه لصحتكوثقتك, و جمالك.
+            نوفر مدى من الخدمات, كل خدمه مصممه لصحتك و ثقتك, و جمالك.
           </p>
         </div>
         <div className="services">
