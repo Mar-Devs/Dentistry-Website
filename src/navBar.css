@@ -25,6 +25,7 @@ header {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
+
 .desktop-ul {
   display: flex;
   justify-content: center;
@@ -51,10 +52,6 @@ header {
 
 .desktop-ul li:first-child {
   margin-left: auto;
-}
-
-.desktop-ul li:last-child {
-  margin-right: auto;
 }
 
 ul li a:hover {
@@ -84,14 +81,13 @@ ul li a:hover {
 
 .mobile-ul {
   display: none;
-  flex-direction: column-reverse;
+  flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
 .menu-icon {
   display: none;
-  margin-right: auto;
   height: 2rem;
 }
 
@@ -105,7 +101,7 @@ ul li a:hover {
   width: 60%;
   top: 0;
   right: 0;
-  position: fixed;
+  position: absolute;
   z-index: 999;
   background-color: var(--primary-color);
   display: none;
@@ -181,5 +177,6 @@ ul li a:hover {
 
   nav {
     display: flex;
+    justify-content: space-between;
   }
 }

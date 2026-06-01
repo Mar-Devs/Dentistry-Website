@@ -19,7 +19,7 @@ html {
    Dental Clinic Hero — Background CSS
    ============================================= */
 
-#root {
+#home {
   background-color: #f0f6fb; /* light blue-white base */
   position: relative;
   overflow: hidden;
@@ -28,7 +28,7 @@ html {
 }
 
 /* Large soft circle — bottom right (behind stats) */
-#root::before {
+#home::before {
   content: "";
   position: absolute;
   bottom: -80px;
@@ -42,7 +42,7 @@ html {
 }
 
 /* Smaller soft circle — upper left area */
-#root::after {
+#home::after {
   content: "";
   position: absolute;
   top: 40px;
@@ -56,7 +56,7 @@ html {
 }
 
 /* All direct children should sit above the circles */
-#root > * {
+#home > * {
   position: relative;
   z-index: 1;
 }
