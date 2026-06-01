@@ -166,8 +166,8 @@ ul li a:hover {
 }
 
 @media (max-width: 1024px) {
-  heading{
-    padding: 1rem;
+  nav{
+    margin: 1rem;
   }
   .desktop-ul {
     display: none;
