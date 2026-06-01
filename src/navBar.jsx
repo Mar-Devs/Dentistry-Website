@@ -46,7 +46,7 @@ export function NavBar() {
           <a href="#home">
             <img
               className="mobile-logo"
-              src="../public/favIcon.png"
+              src={favIcon}
               alt="tooth"
             />
           </a>
