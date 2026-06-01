@@ -75,7 +75,6 @@ const css = `
     font-family: 'Tajawal', sans-serif;
     font-size: 0.72rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
     color: var(--blue-bright);
     background: rgba(37,99,235,0.09);
     border: 1px solid var(--border);
