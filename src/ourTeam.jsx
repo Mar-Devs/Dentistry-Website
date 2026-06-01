@@ -39,14 +39,14 @@ export function OurTeam() {
           </div>
           <div className="our-team-bottom">
             <AboutCard
-            drNameDiv = "humam"
+              drNameDiv="humam"
               drName="دكتور همام الاسدي"
               drAbout="متخصص زرع"
               practicingSince="يمارس منذ 2018"
               certifcates={certifcates1}
             />
             <AboutCard
-            drNameDiv = "sarah"
+              drNameDiv="sarah"
               drName="دكتوره ساره علي"
               drAbout="متخصصة تقويم"
               practicingSince="تمارس منذ 2018"
@@ -60,46 +60,50 @@ export function OurTeam() {
 }
 
 function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   function certDisplay() {
-    if(open === false){
-    const certDiv = document.querySelector(".certifcations");
-    const btn = document.querySelector(".arrow-down");
-    btn.addEventListener("click", () => {
-      certDiv.style.display = "flex";
-      setOpen(true)
-    });
-  } else if(open === true){
-    const certDiv = document.querySelector(".certifcations");
-    const btn = document.querySelector(".arrow-down");
+    if (open === false) {
+      const certDiv = document.querySelector(".certifcations");
+      const btn = document.querySelector(".arrow-down");
+      btn.addEventListener("click", () => {
+        certDiv.style.display = "flex";
+        setOpen(true);
+      });
+    } else if (open === true) {
+      const certDiv = document.querySelector(".certifcations");
+      const btn = document.querySelector(".arrow-down");
 
-    btn.addEventListener("click", () => {
-      certDiv.style.display = "none";
-      setOpen(false)
-    });
-  }
+      btn.addEventListener("click", () => {
+        certDiv.style.display = "none";
+        setOpen(false);
+      });
+    }
   }
   return (
     <>
       <div className="card">
         <div className="card-top-and-bottom">
-        <div className="card-top">
-          <img src={maleProfile} alt="" />
-        </div>
-        <div className="card-bottom">
-          <h6 dir="rtl">{drName}</h6>
-          <p dir="rtl">{drAbout}</p>
-          <div className="practice-and-more">
-            <button className="arrow-down" onClick={certDisplay}>
-              <img src={arrowDownwardIcon} alt="downward-arrow" onClick={() => setOpen(!open)}/>
-            </button>
-            <p className="practice-date" dir="rlt">
-              {practicingSince}
-            </p>
+          <div className="card-top">
+            <img src={maleProfile} alt="" />
+          </div>
+          <div className="card-bottom">
+            <h6 dir="rtl">{drName}</h6>
+            <p dir="rtl">{drAbout}</p>
+            <div className="practice-and-more">
+              <button className="arrow-down" onClick={certDisplay}>
+                <img
+                  src={arrowDownwardIcon}
+                  alt="downward-arrow"
+                  onClick={() => setOpen(!open)}
+                />
+              </button>
+              <p className="practice-date" dir="rlt">
+                {practicingSince}
+              </p>
+            </div>
           </div>
         </div>
-        </div>
-    {open && (
+        {
           <div className="certifcations">
             <h6 dir="rtl">شهادات:</h6>
             <ul>
@@ -110,7 +114,7 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
               ))}
             </ul>
           </div>
-        )}
+        }
       </div>
     </>
   );

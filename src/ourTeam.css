@@ -67,10 +67,10 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 .card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: white;
   border: solid 2px var(--primary-color);
   height: fit-content;
