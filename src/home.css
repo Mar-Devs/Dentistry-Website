@@ -27,7 +27,7 @@ html {
   direction: rtl;
 }
 
-/* Large soft circle — bottom right (behind stats) */
+
 #home::before {
   content: "";
   position: absolute;
@@ -36,12 +36,11 @@ html {
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  background-color: var(--primary-color); /* medium blue tint */
+  background-color: var(--primary-color); 
   opacity: 0.55;
   z-index: 0;
 }
 
-/* Smaller soft circle — upper left area */
 #home::after {
   content: "";
   position: absolute;
