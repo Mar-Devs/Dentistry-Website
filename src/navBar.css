@@ -12,6 +12,7 @@ html {
 #root {
   margin: 0;
   padding: 0;
+  background-color: #f0f6fb;
 }
 
 .logo {
