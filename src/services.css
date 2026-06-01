@@ -15,7 +15,6 @@
 .services-header h6 {
   margin: 0px;
   display: inline-block;
-  font-family: "Tajawal", sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -34,8 +33,11 @@
 
 .services-header h4 {
   text-align: center;
-  font-size: 2rem;
-  margin: 5px 0px 0px 0px;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-weight: 900;
+  color: var(--blue-deep);
+  line-height: 1.15;
+  margin-bottom: 12px;
 }
 
 .button button {

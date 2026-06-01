@@ -180,7 +180,6 @@ const css = `
     font-size: 0.78rem;
     font-weight: 600;
     color: var(--text-soft);
-    font-family: 'Tajawal', sans-serif;
   }
   .db-input, .db-select {
     width: 100%;
@@ -234,7 +233,6 @@ const css = `
 
   .db-privacy {
     margin-top: 11px;
-    font-family: 'Tajawal', sans-serif;
     font-size: 0.74rem;
     color: var(--text-soft);
     text-align: center;
@@ -533,7 +531,7 @@ export function DentalBooking({
                         className={cls("db-input", "phone")}
                         id="db-phone"
                         type="tel"
-                        placeholder="05xxxxxxxx"
+                        placeholder="07xxxxxxxx"
                         value={form.phone}
                         onChange={set("phone")}
                         autoComplete="tel"

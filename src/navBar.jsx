@@ -1,7 +1,7 @@
 import "./navBar.css";
-import menuIcon from "./assests/menuIcon.svg"
-import closeIcon from "./assests/closeIcon.svg"
-import favIcon from "./assests/favIcon.png"
+import menuIcon from "./assests/menuIcon.svg";
+import closeIcon from "./assests/closeIcon.svg";
+import favIcon from "./assests/favIcon.png";
 
 export function NavBar() {
   function showMobileNav() {
@@ -25,16 +25,10 @@ export function NavBar() {
         <img className="close-icon" src={closeIcon} alt="close" />
         <ul className="mobile-ul">
           <li>
-            <a href="">من نحن</a>
+            <a href="#services" onChange={closeIcon}>خدماتنا</a>
           </li>
           <li>
-            <a href="#services">خدماتنا</a>
-          </li>
-          <li>
-            <a href="#about-us">فريقنا</a>
-          </li>
-          <li>
-            <a href="#our-team">زبائننا</a>
+            <a href="#our-team">فريقنا</a>
           </li>
           <li className="contact-us-mobile" id="contact-us-mobile">
             <a href="#contact-us">تواصل معنا</a>
@@ -44,11 +38,7 @@ export function NavBar() {
       <header>
         <nav>
           <a href="#home">
-            <img
-              className="mobile-logo"
-              src={favIcon}
-              alt="tooth"
-            />
+            <img className="mobile-logo" src={favIcon} alt="tooth" />
           </a>
           <img
             className="menu-icon"
@@ -60,7 +50,7 @@ export function NavBar() {
           <ul className="desktop-ul" dir="rtl">
             <li>
               <a href="#home">
-                <img className="logo" src="../public/favIcon.png" alt="tooth" />
+                <img className="logo" src={favIcon} alt="tooth" />
               </a>
             </li>
             <li>
@@ -76,8 +66,10 @@ export function NavBar() {
               <a href="">زبائننا</a>
             </li>
             <li>
-              <button className="contact-us"><a href="#contact-us">تواصل معنا</a></button>
-            </li>  
+              <button className="contact-us">
+                <a href="#contact-us">تواصل معنا</a>
+              </button>
+            </li>
           </ul>
         </nav>
       </header>

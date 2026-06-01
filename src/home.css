@@ -5,9 +5,15 @@ html {
 #root {
   display: flex;
   flex-direction: column;
-  /* overflow-x: hidden; */
   animation: rootSlideIn 1.5s;
 }
+
+/* #home{
+  background: 
+  radial-gradient(ellipse 80% 60% at 70% 40%, #DBEAFE 0%, transparent 65%),
+  radial-gradient(ellipse 50% 40% at 20% 80%, #EFF6FF 0%, transparent 60%),
+  #ffffff;
+} */
 
 @keyframes rootSlideIn {
   0% {
