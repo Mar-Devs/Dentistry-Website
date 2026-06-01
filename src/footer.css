@@ -175,7 +175,7 @@
 }
 
 footer{
-  position: fixed;
+  position: absolute;
 }
 .footer-bottom {
   background: rgba(0, 0, 0, 0.15);
