@@ -12,7 +12,7 @@ export function Home(){
                 </div>
                 <div className="home-body-right">
                     <p dir="rtl">عياده متخصصه في مجال تعويض الاسنان الثابته و المتحركه</p>
-                    <button><img src={calenderIcon}alt="calendar" />احجز الان</button>
+                    <a href="#contact-us" className="landing-page-btn"><img src={calenderIcon}alt="calendar" />احجز الان</a>
                 </div>
             </div>
         </section>

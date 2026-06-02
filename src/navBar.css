@@ -55,6 +55,10 @@ header {
   margin-left: auto;
 }
 
+.desktop-ul li:last-child{
+  margin-right: auto;
+}
+
 ul li a:hover {
   font-weight: 900;
 }
@@ -72,9 +76,7 @@ ul li a:hover {
   color: var(--primary-color);
 }
 
-.contact-us:hover {
-  transform: scale(1.1);
-}
+
 
 .contact-us:active {
   transform: translateY(10px);
@@ -102,7 +104,7 @@ ul li a:hover {
   width: 60%;
   top: 0;
   right: 0;
-  position: absolute;
+  position: fixed;
   z-index: 999;
   background-color: var(--primary-color);
   display: none;

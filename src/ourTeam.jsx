@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import arrowDownwardIcon from "./assests/arrow-downward.svg";
+import arrowUpIcon from "./assests/arrow-up.svg"
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -65,16 +66,23 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
     if (open === false) {
       const certDiv = document.querySelector(".certifcations");
       const btn = document.querySelector(".arrow-down");
+      const arrowImg = document.querySelector(".arrow-down-img")
       btn.addEventListener("click", () => {
         certDiv.style.display = "flex";
+        arrowImg.src = arrowUpIcon
+        arrowImg.alt = "upward-arrow"
+
         setOpen(true);
       });
     } else if (open === true) {
       const certDiv = document.querySelector(".certifcations");
       const btn = document.querySelector(".arrow-down");
+      const arrowImg = document.querySelector(".arrow-down-img")
 
       btn.addEventListener("click", () => {
         certDiv.style.display = "none";
+        arrowImg.src = arrowDownwardIcon
+        arrowImg.alt = "downward-arrow"
         setOpen(false);
       });
     }
@@ -92,6 +100,7 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
             <div className="practice-and-more">
               <button className="arrow-down" onClick={certDisplay}>
                 <img
+                className="arrow-down-img"
                   src={arrowDownwardIcon}
                   alt="downward-arrow"
                   onClick={() => setOpen(!open)}

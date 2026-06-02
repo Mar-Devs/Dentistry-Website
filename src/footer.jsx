@@ -9,11 +9,10 @@ export function Footer() {
     <footer>
       <div className="footer-wrap">
         <nav className="footer-top">
-          <a href="#">من نحن</a>
-          <a href="#">خدماتنا</a>
-          <a href="#">فريقنا</a>
-          <a href="#">زبائننا</a>
-          <a href="#">تواصل معنا</a>
+          <a href="#home">الرئيسية</a>
+          <a href="#services">خدماتنا</a>
+          <a href="#our-team">فريقنا</a>
+          <a href="#contact-us">تواصل معنا</a>
         </nav>
         <div className="footer-main">
           <div className="footer-col">

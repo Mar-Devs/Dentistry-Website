@@ -483,15 +483,6 @@ export function DentalBooking({
             </p>
           </header>
 
-          {/* ── Trust Strip ──
-      <div className="db-trust" role="list" aria-label="مزايا العيادة">
-        {TRUST_ITEMS.map((t) => (
-          <div key={t.label} className="db-trust-item" role="listitem">
-            <div className="db-trust-icon" aria-hidden="true">{t.icon}</div>
-            {t.label}
-          </div>
-        ))}
-      </div> */}
 
           {/* ── Card ── */}
           <main className="db-card-wrap" id="booking">
@@ -597,13 +588,6 @@ export function DentalBooking({
                   >
                     {loading ? "جارٍ الإرسال..." : "إرسال الطلب"}
                   </button>
-
-                  {/* <p className="db-privacy">
-                    بالضغط على الزر أعلاه، أنت توافق على{" "}
-                    <a href="#" aria-label="سياسة الخصوصية">
-                      سياسة الخصوصية
-                    </a>
-                  </p> */}
                 </section>
 
                 {/* Map */}

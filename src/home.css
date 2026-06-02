@@ -75,27 +75,30 @@ html {
   flex-direction: row-reverse;
 }
 
-.home-body-right button {
+.landing-page-btn {
   background-color: rgba(255, 255, 255, 0.2);
   border: solid 1px var(--primary-color);
   padding: 1rem;
   width: 80%;
   align-self: center;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: row-reverse;
   color: black;
+  text-decoration: none;
 }
 
-.home-body-right button {
+.landing-page-btn {
   padding: 1rem 2rem;
   font-size: 2rem;
 }
 
-.home-body-right button:hover {
+.landing-page-btn:hover {
   transform: translateY(10px);
 }
 
-.home-body-right button img {
+.landing-page-btn img {
   height: 2rem;
   margin-right: 1rem;
 }

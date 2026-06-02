@@ -97,9 +97,9 @@ export function NavBar() {
               <a href="#our-team">فريقنا</a>
             </li>
             <li>
-              <button className="contact-us">
-                <a href="#contact-us">تواصل معنا</a>
-              </button>
+              <a className="contact-us" href="#contact-us">
+                تواصل معنا
+              </a>
             </li>
           </ul>
         </nav>
