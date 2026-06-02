@@ -1,12 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { NavBar } from "./navBar";
-import { Home } from "./home";
-import {StatsSection} from "./stats.jsx"
-import { OurTeam } from "./ourTeam";
-import { Services } from "./services";
-import { DentalBooking } from "./contactForm.jsx";
-import { Footer } from "./footer";
+import { NavBar } from "./nav-bar/navBar.jsx";
+import { Home } from "./home/home.jsx";
+import {StatsSection} from "./stats/stats.jsx"
+import { OurTeam } from "./our-team/ourTeam.jsx";
+import { Services } from "./services/services.jsx";
+import { DentalBooking } from "./contact-form/contactForm.jsx";
+import { Footer } from "./footer/footer.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

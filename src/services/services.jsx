@@ -1,9 +1,9 @@
 import "./services.css";
-import arrowRight from "./assests/arrow-right.svg";
-import denture from "./assests/denture.png";
-import toothFilling from "./assests/tooth-filling.png";
-import toothExtraction from "./assests/tooth-extraction.png";
-import braces from "./assests/braces.png";
+import arrowRight from "../assests/arrow-right.svg";
+import denture from "../assests/denture.png";
+import toothFilling from "../assests/tooth-filling.png";
+import toothExtraction from "../assests/tooth-extraction.png";
+import braces from "../assests/braces.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";

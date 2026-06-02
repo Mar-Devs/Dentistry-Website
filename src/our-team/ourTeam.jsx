@@ -1,11 +1,11 @@
-import maleProfile from "./assests/male-profile.jpg";
+import maleProfile from "../assests/male-profile.jpg";
 import "./ourTeam.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
-import arrowDownwardIcon from "./assests/arrow-downward.svg";
-import arrowUpIcon from "./assests/arrow-up.svg";
+import arrowDownwardIcon from "../assests/arrow-downward.svg";
+import arrowUpIcon from "../assests/arrow-up.svg";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 

@@ -1,7 +1,7 @@
 import "./navBar.css";
-import menuIcon from "./assests/menuIcon.svg";
-import closeIcon from "./assests/closeIcon.svg";
-import favIcon from "./assests/favIcon.png";
+import menuIcon from "../assests/menuIcon.svg";
+import closeIcon from "../assests/closeIcon.svg";
+import favIcon from "../assests/favIcon.png";
 
 export function NavBar() {
   function showMobileNav() {

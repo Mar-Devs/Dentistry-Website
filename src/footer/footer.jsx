@@ -1,7 +1,7 @@
 import "./footer.css";
-import pin from "./assests/pin.svg";
-import facebook from "./assests/facebook.png"
-import instagram from "./assests/instagram.png"
+import pin from "../assests/pin.svg";
+import facebook from "../assests/facebook.png"
+import instagram from "../assests/instagram.png"
 
 export function Footer() {
   return (

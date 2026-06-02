@@ -1,7 +1,7 @@
 import "./home.css"
-import dentist from './assests/dentist.png'
-import calenderIcon from "./assests/calenderIcon.svg"
-import tooth3D from "./assests/3d-tooth.png"
+import dentist from '../assests/dentist.png'
+import calenderIcon from "../assests/calenderIcon.svg"
+import tooth3D from "../assests/3d-tooth.png"
 export function Home(){
     return(
         <>
