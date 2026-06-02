@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import arrowDownwardIcon from "./assests/arrow-downward.svg";
-import arrowUpIcon from "./assests/arrow-up.svg"
+import arrowUpIcon from "./assests/arrow-up.svg";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -45,6 +45,9 @@ export function OurTeam() {
               drAbout="متخصص زرع"
               practicingSince="يمارس منذ 2018"
               certifcates={certifcates1}
+              str1="doc-a"
+              str2="doc-a-img"
+              str3="doc-a-div"
             />
             <AboutCard
               drNameDiv="sarah"
@@ -52,6 +55,9 @@ export function OurTeam() {
               drAbout="متخصصة تقويم"
               practicingSince="تمارس منذ 2018"
               certifcates={certifcates2}
+              str1="doc-b"
+              str2="doc-b-img"
+              str3="doc-b-div"
             />
           </div>
         </div>
@@ -60,29 +66,37 @@ export function OurTeam() {
   );
 }
 
-function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
+function AboutCard({
+  drName,
+  drAbout,
+  practicingSince,
+  certifcates,
+  str1,
+  str2,
+  str3,
+}) {
   const [open, setOpen] = useState(false);
+
   function certDisplay() {
+    const certDiv = document.querySelector(`.${str3}`);
     if (open === false) {
-      const certDiv = document.querySelector(".certifcations");
-      const btn = document.querySelector(".arrow-down");
-      const arrowImg = document.querySelector(".arrow-down-img")
+      const btn = document.querySelector(`.${str1}`);
+      const arrowImg = document.querySelector(`.${str2}`);
       btn.addEventListener("click", () => {
         certDiv.style.display = "flex";
-        arrowImg.src = arrowUpIcon
-        arrowImg.alt = "upward-arrow"
+        arrowImg.src = arrowUpIcon;
+        arrowImg.alt = "upward-arrow";
 
         setOpen(true);
       });
     } else if (open === true) {
-      const certDiv = document.querySelector(".certifcations");
-      const btn = document.querySelector(".arrow-down");
-      const arrowImg = document.querySelector(".arrow-down-img")
+      const btn = document.querySelector(`.${str1}`);
+      const arrowImg = document.querySelector(`.${str2}`);
 
       btn.addEventListener("click", () => {
         certDiv.style.display = "none";
-        arrowImg.src = arrowDownwardIcon
-        arrowImg.alt = "downward-arrow"
+        arrowImg.src = arrowDownwardIcon;
+        arrowImg.alt = "downward-arrow";
         setOpen(false);
       });
     }
@@ -98,9 +112,13 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
             <h6 dir="rtl">{drName}</h6>
             <p dir="rtl">{drAbout}</p>
             <div className="practice-and-more">
-              <button className="arrow-down" onClick={certDisplay}>
+              <button style={{
+                  backgroundColor: "rgba(255, 255, 255, 0)",
+                  border: "none"
+              }} className={str1} onClick={certDisplay}>
                 <img
-                className="arrow-down-img"
+                style={{height: "2rem"}}
+                  className={str2}
                   src={arrowDownwardIcon}
                   alt="downward-arrow"
                   onClick={() => setOpen(!open)}
@@ -113,8 +131,26 @@ function AboutCard({ drName, drAbout, practicingSince, certifcates }) {
           </div>
         </div>
         {
-          <div className="certifcations">
-            <h6 dir="rtl">شهادات:</h6>
+          <div
+            className={str3}
+            style={{
+              display: "none",
+              flexDirection: "column",
+              padding: "0.2rem 1.5rem",
+              backgroundColor: "rgba(27, 79, 216, 0.2)",
+              borderRadius: "10px",
+            }}
+          >
+            <h6
+              className="certifcations-h6s"
+              dir="rtl"
+              style={{
+                margin: "0px",
+                fontSize: "1rem",
+              }}
+            >
+              شهادات:
+            </h6>
             <ul>
               {certifcates.map((certifcation) => (
                 <li dir="rtl" key={certifcation}>

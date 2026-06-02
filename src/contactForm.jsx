@@ -401,6 +401,7 @@ export function DentalBooking({
   clinicAddress = "النجف, حي الامير — شارع  الزهور",
   mapEmbedSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108248.19688337772!2d44.24702907185346!3d32.02171841159331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x155ed0ac9b7a8261%3A0xb989aee40be1b8f0!2sNajaf%2C%20Najaf%20Governorate!5e0!3m2!1sen!2siq!4v1777587363725!5m2!1sen!2siq",
   onSubmit = null,
+  whatsappNumber = "9647732245901",
 }) {
   const today = new Date().toISOString().split("T")[0];
 
@@ -455,7 +456,20 @@ export function DentalBooking({
     if (onSubmit) {
       await onSubmit(form);
     } else {
-      await new Promise((r) => setTimeout(r, 800)); // simulate
+          const lines = [
+      `🦷 *حجز موعد - ${clinicName}*`,
+      ``,
+      `👤 الاسم: ${form.name}`,
+      `📞 الهاتف: ${form.phone}`,
+      `🔧 الخدمة: ${form.service}`,
+      `📅 التاريخ: ${form.date}`,
+      form.notes ? `📝 ملاحظات: ${form.notes}` : null,
+    ]
+      .filter(Boolean)
+      .join("\n");
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines)}`;
+    window.open(url, "_blank");
     }
     setLoading(false);
     setForm({ name: "", phone: "", service: "", date: "", notes: "" });
@@ -482,7 +496,6 @@ export function DentalBooking({
               ونحن نتكفل بالباقي.
             </p>
           </header>
-
 
           {/* ── Card ── */}
           <main className="db-card-wrap" id="booking">

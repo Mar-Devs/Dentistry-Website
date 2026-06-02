@@ -16,7 +16,6 @@ html {
   direction: rtl;
 }
 
-
 #home::before {
   content: "";
   position: absolute;
@@ -25,9 +24,13 @@ html {
   width: 420px;
   height: 420px;
   border-radius: 50%;
-  background-color: var(--primary-color); 
+  background-color: var(--primary-color);
   opacity: 0.55;
   z-index: 0;
+  animation-name: rotateBkg;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #home::after {
@@ -41,6 +44,19 @@ html {
   background-color: var(--primary-color); /* lighter blue tint */
   opacity: 0.45;
   z-index: 0;
+  animation-name: rotateBkg;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes rotateBkg {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(5px);
+  }
 }
 
 /* All direct children should sit above the circles */
@@ -83,7 +99,7 @@ html {
   align-self: center;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: centerl;
   flex-direction: row-reverse;
   color: black;
   text-decoration: none;
@@ -119,7 +135,7 @@ html {
   }
 }
 
-@media (min-width: 1025px) {
+@media (min-width: 1400) {
   .home-body-right p {
     font-size: 3rem;
     width: 20ch;
