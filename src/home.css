@@ -99,7 +99,7 @@ html {
   align-self: center;
   display: flex;
   justify-content: center;
-  align-items: centerl;
+  align-items: center;
   flex-direction: row-reverse;
   color: black;
   text-decoration: none;
@@ -135,7 +135,7 @@ html {
   }
 }
 
-@media (min-width: 1400) {
+@media (min-width: 1400px) {
   .home-body-right p {
     font-size: 3rem;
     width: 20ch;
