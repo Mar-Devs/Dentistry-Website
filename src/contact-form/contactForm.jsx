@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
+import { ar } from "react-day-picker/locale";
 
 /* ─── Google Font injected once ─── */
 const fontLink = document.createElement("link");
@@ -285,6 +288,31 @@ const css = `
   }
   .db-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+  .db-daypicker-wrap {
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 8px;
+  background: var(--blue-pale);
+  display: flex;
+  justify-content: center;
+}
+.db-daypicker-wrap.err { border-color: #ef4444; }
+.db-daypicker-wrap .rdp-root {
+  --rdp-accent-color: var(--blue-bright);
+  --rdp-accent-background-color: var(--blue-mist);
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+}
+.db-day-selected {
+  background: var(--blue-bright) !important;
+  color: #fff !important;
+  border-radius: 8px;
+}
+.db-daypicker-wrap .rdp-disabled {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .db-header { padding: 36px 20px 16px; }
@@ -395,21 +423,34 @@ const SERVICES = [
   { value: "checkup", label: "كشف وفحص عام" },
 ];
 
+const TIME_SLOTS = [
+  "05:00 م", "05:30 م", "06:00 م", "06:30 م",
+  "07:00 م", "07:30 م", "08:00 م", "08:30 م",
+  "09:00 م", "09:30 م", "10:00 م",
+];
+
+const GENDERS = [
+  { value: "any", label: "لا يهم" },
+  { value: "female", label: "طبيبة" },
+  { value: "male", label: "طبيب" },
+];
+
+/* ─── Web3Forms access key ─── */
+const WEB3FORMS_ACCESS_KEY = "353e643e-0952-4994-b807-043aca8601b3";
+
 /* ─── Main Component ─── */
 export function DentalBooking({
   clinicName = "ابتسامه",
   clinicAddress = "النجف, حي الامير — شارع  الزهور",
   mapEmbedSrc = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d108248.19688337772!2d44.24702907185346!3d32.02171841159331!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x155ed0ac9b7a8261%3A0xb989aee40be1b8f0!2sNajaf%2C%20Najaf%20Governorate!5e0!3m2!1sen!2siq!4v1777587363725!5m2!1sen!2siq",
-  onSubmit = null,
-  whatsappNumber = "9647732245901",
 }) {
-  const today = new Date().toISOString().split("T")[0];
-
   const [form, setForm] = useState({
     name: "",
     phone: "",
     service: "",
     date: "",
+    time: "",
+    gender: "",
     notes: "",
   });
   const [errors, setErrors] = useState({});
@@ -431,53 +472,98 @@ export function DentalBooking({
     return () => clearTimeout(t);
   }, [toast]);
 
+  /* Generic setter for text inputs / selects */
   const set = (key) => (e) => {
     setForm((f) => ({ ...f, [key]: e.target.value }));
     setErrors((er) => ({ ...er, [key]: false }));
   };
 
-  const validate = () => {
-    const e = {};
-    if (!form.name.trim()) e.name = true;
-    if (!form.phone.trim()) e.phone = true;
-    if (!form.service) e.service = true;
-    if (!form.date) e.date = true;
-    return e;
+  /* DayPicker hands back a Date object — store it as a YYYY-MM-DD string */
+  const handleDateSelect = (selectedDate) => {
+    setErrors((er) => ({ ...er, date: false }));
+    if (!selectedDate) {
+      setForm((f) => ({ ...f, date: "" }));
+      return;
+    }
+    const y = selectedDate.getFullYear();
+    const m = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    const d = String(selectedDate.getDate()).padStart(2, "0");
+    setForm((f) => ({ ...f, date: `${y}-${m}-${d}` }));
   };
 
-  const handleSubmit = async () => {
-    const e = validate();
-    if (Object.keys(e).length) {
-      setErrors(e);
+const validate = () => {
+  const e = {};
+  if (!form.name.trim()) e.name = true;
+  if (!/^07\d{9}$/.test(form.phone.trim())) e.phone = true;
+  if (!form.service) e.service = true;
+  if (!form.date) e.date = true;
+  if (!form.time) e.time = true;
+  if (!form.gender) e.gender = true;
+  return e;
+};
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const errs = validate();
+    if (Object.keys(errs).length) {
+      setErrors(errs);
       return;
     }
 
     setLoading(true);
-    if (onSubmit) {
-      await onSubmit(form);
-    } else {
-          const lines = [
-      `🦷 *حجز موعد - ${clinicName}*`,
-      ``,
-      `👤 الاسم: ${form.name}`,
-      `📞 الهاتف: ${form.phone}`,
-      `🔧 الخدمة: ${form.service}`,
-      `📅 التاريخ: ${form.date}`,
-      form.notes ? `📝 ملاحظات: ${form.notes}` : null,
-    ]
-      .filter(Boolean)
-      .join("\n");
+    try {
+      // Map coded values back to Arabic labels for the email
+      const serviceLabel =
+        SERVICES.find((s) => s.value === form.service)?.label || form.service;
+      const genderLabel =
+        GENDERS.find((g) => g.value === form.gender)?.label || form.gender;
 
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(lines)}`;
-    window.open(url, "_blank");
+      const message = [
+        `الاسم: ${form.name}`,
+        `رقم الهاتف: ${form.phone}`,
+        `نوع الخدمة: ${serviceLabel}`,
+        `التاريخ المفضل: ${form.date}`,
+        `الوقت المفضل: ${form.time}`,
+        `تفضيل الطبيب: ${genderLabel}`,
+        `ملاحظات: ${form.notes.trim() || "—"}`,
+      ].join("\n");
+
+      const payload = new FormData();
+      payload.append("access_key", WEB3FORMS_ACCESS_KEY);
+      payload.append("subject", "طلب حجز جديد من الموقع");
+      payload.append("from_name", clinicName);
+      payload.append("message", message);
+
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: payload,
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setForm({
+          name: "",
+          phone: "",
+          service: "",
+          date: "",
+          time: "",
+          gender: "",
+          notes: "",
+        });
+        setToast(true);
+      } else {
+        setErrors((er) => ({ ...er, submit: true }));
+      }
+    } catch {
+      setErrors((er) => ({ ...er, submit: true }));
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
-    setForm({ name: "", phone: "", service: "", date: "", notes: "" });
-    setToast(true);
   };
 
   const cls = (base, key) => `${base}${errors[key] ? " err" : ""}`;
-
   return (
     <>
       <section id="contact-us">
@@ -510,97 +596,157 @@ export function DentalBooking({
                     بيانات الحجز
                   </div>
 
-                  <div className="db-form-grid">
-                    <div className="db-field">
-                      <label className="db-label" htmlFor="db-name">
-                        الاسم الكامل
-                      </label>
-                      <input
-                        className={cls("db-input", "name")}
-                        id="db-name"
-                        type="text"
-                        placeholder="أدخل اسمك"
-                        value={form.name}
-                        onChange={set("name")}
-                        autoComplete="name"
-                      />
-                    </div>
+                  <form onSubmit={handleSubmit}>
+                    <div className="db-form-grid">
+                      <div className="db-field">
+                        <label className="db-label" htmlFor="db-name">
+                          الاسم الكامل
+                        </label>
+                        <input
+                          className={cls("db-input", "name")}
+                          id="db-name"
+                          type="text"
+                          placeholder="أدخل اسمك"
+                          value={form.name}
+                          onChange={set("name")}
+                          autoComplete="name"
+                        />
+                      </div>
 
-                    <div className="db-field">
-                      <label className="db-label" htmlFor="db-phone">
-                        رقم الهاتف
-                      </label>
-                      <input
-                        className={cls("db-input", "phone")}
-                        id="db-phone"
-                        type="tel"
-                        placeholder="07xxxxxxxx"
-                        value={form.phone}
-                        onChange={set("phone")}
-                        autoComplete="tel"
-                      />
-                    </div>
+                      <div className="db-field">
+                        <label className="db-label" htmlFor="db-phone">
+                          رقم الهاتف
+                        </label>
+                        <input
+                          className={cls("db-input", "phone")}
+                          id="db-phone"
+                          type="tel"
+                          placeholder="07xxxxxxxx"
+                          value={form.phone}
+                          onChange={set("phone")}
+                          autoComplete="tel"
+                        />
+                      </div>
 
-                    <div className="db-field">
-                      <label className="db-label" htmlFor="db-service">
-                        نوع الخدمة
-                      </label>
-                      <div className="db-select-wrap">
-                        <select
-                          className={cls("db-select", "service")}
-                          id="db-service"
-                          value={form.service}
-                          onChange={set("service")}
-                        >
-                          <option value="" disabled>
-                            اختر الخدمة
-                          </option>
-                          {SERVICES.map((s) => (
-                            <option key={s.value} value={s.value}>
-                              {s.label}
+                      <div className="db-field">
+                        <label className="db-label" htmlFor="db-service">
+                          نوع الخدمة
+                        </label>
+                        <div className="db-select-wrap">
+                          <select
+                            className={cls("db-select", "service")}
+                            id="db-service"
+                            value={form.service}
+                            onChange={set("service")}
+                          >
+                            <option value="" disabled>
+                              اختر الخدمة
                             </option>
-                          ))}
-                        </select>
+                            {SERVICES.map((s) => (
+                              <option key={s.value} value={s.value}>
+                                {s.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="db-field">
+                        <label className="db-label" htmlFor="db-time">
+                          الوقت المفضل
+                        </label>
+                        <div className="db-select-wrap">
+                          <select
+                            className={cls("db-select", "time")}
+                            id="db-time"
+                            value={form.time}
+                            onChange={set("time")}
+                          >
+                            <option value="" disabled>
+                              اختر الوقت
+                            </option>
+                            {TIME_SLOTS.map((t) => (
+                              <option key={t} value={t}>
+                                {t}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="db-field">
+                        <label className="db-label" htmlFor="db-gender">
+                          تفضيل الطبيب
+                        </label>
+                        <div className="db-select-wrap">
+                          <select
+                            className={cls("db-select", "gender")}
+                            id="db-gender"
+                            value={form.gender}
+                            onChange={set("gender")}
+                          >
+                            <option value="" disabled>
+                              اختر التفضيل
+                            </option>
+                            {GENDERS.map((g) => (
+                              <option key={g.value} value={g.value}>
+                                {g.label}
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="db-field full">
+                        <label className="db-label">التاريخ المفضل</label>
+                        <div
+                          className={`db-daypicker-wrap${
+                            errors.date ? " err" : ""
+                          }`}
+                        >
+                          <DayPicker
+                            mode="single"
+                            locale={ar}
+                            dir="rtl"
+                            selected={
+                              form.date ? new Date(form.date) : undefined
+                            }
+                            onSelect={handleDateSelect}
+                            disabled={[
+                              { dayOfWeek: [5] },
+                              { before: new Date() },
+                            ]}
+                            modifiersClassNames={{
+                              selected: "db-day-selected",
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="db-field full">
+                        <label className="db-label" htmlFor="db-notes">
+                          ملاحظات إضافية (اختياري)
+                        </label>
+                        <input
+                          className="db-input"
+                          id="db-notes"
+                          type="text"
+                          placeholder="أي معلومات تودّ إضافتها..."
+                          value={form.notes}
+                          onChange={set("notes")}
+                        />
                       </div>
                     </div>
 
-                    <div className="db-field">
-                      <label className="db-label" htmlFor="db-date">
-                        التاريخ المفضل
-                      </label>
-                      <input
-                        className={cls("db-input", "date")}
-                        id="db-date"
-                        type="date"
-                        min={today}
-                        value={form.date}
-                        onChange={set("date")}
-                      />
-                    </div>
-
-                    <div className="db-field full">
-                      <label className="db-label" htmlFor="db-notes">
-                        ملاحظات إضافية (اختياري)
-                      </label>
-                      <input
-                        className="db-input"
-                        id="db-notes"
-                        type="text"
-                        placeholder="أي معلومات تودّ إضافتها..."
-                        value={form.notes}
-                        onChange={set("notes")}
-                      />
-                    </div>
-                  </div>
-
-                  <button
-                    className="db-btn"
-                    onClick={handleSubmit}
-                    disabled={loading}
-                    aria-label="إرسال طلب الحجز"
-                  >
-                    {loading ? "جارٍ الإرسال..." : "إرسال الطلب"}
-                  </button>
+                    <button
+                      className="db-btn"
+                      type="submit"
+                      disabled={loading}
+                      aria-label="إرسال طلب الحجز"
+                    >
+                      {loading ? "جارٍ الإرسال..." : "إرسال الطلب"}
+                    </button>
+                  </form>
                 </section>
 
                 {/* Map */}

@@ -2,62 +2,39 @@ import "./navBar.css";
 import menuIcon from "../assests/menuIcon.svg";
 import closeIcon from "../assests/closeIcon.svg";
 import favIcon from "../assests/favIcon.png";
+import { useState } from "react";
 
 export function NavBar() {
-  function showMobileNav() {
-    const menuIcon = document.querySelector(".menu-icon");
-    const closeIcon = document.querySelector(".close-icon");
-    const menuNav = document.querySelector(".mobile-nav");
+  const [open, setOpen] = useState(false);
 
-    menuIcon.addEventListener("click", () => {
-      menuNav.style.animationName = "menuSlideIn";
+  function toggleMenu() {
+    const menuNav = document.querySelector(".mobile-nav");
+    if (open === false) {
       menuNav.style.display = "flex";
-    });
-
-    closeIcon.addEventListener("click", () => {
+      setOpen(true);
+    } else if (open === true) {
       menuNav.style.display = "none";
-    });
-  }
-
-  function navigationHideNavBar() {
-    const menuNav = document.querySelector(".mobile-nav");
-    const aElement = document.querySelector(".mobile-a-item");
-    const aElement1 = document.querySelector(".mobile-a-item1");
-    const aElement2 = document.querySelector(".mobile-a-item2");
-
-    aElement.addEventListener("click", () => {
-      menuNav.style.display = "none";
-    });
-
-    aElement1.addEventListener("click", () => {
-      menuNav.style.display = "none";
-    });
-
-    aElement2.addEventListener("click", () => {
-      menuNav.style.display = "none";
-    });
+      setOpen(false);
+    }
   }
 
   return (
     <>
       <div className="mobile-nav">
-        <img className="close-icon" src={closeIcon} alt="close" />
+        <img
+          className="close-icon"
+          src={closeIcon}
+          alt="close"
+          onClick={toggleMenu}
+        />
         <ul className="mobile-ul">
           <li>
-            <a
-              href="#services"
-              className="mobile-a-item"
-              onClick={navigationHideNavBar}
-            >
+            <a href="#services" className="mobile-a-item" onClick={toggleMenu}>
               خدماتنا
             </a>
           </li>
           <li>
-            <a
-              href="#our-team"
-              className="mobile-a-item1"
-              onClick={navigationHideNavBar}
-            >
+            <a href="#our-team" className="mobile-a-item1" onClick={toggleMenu}>
               فريقنا
             </a>
           </li>
@@ -65,7 +42,7 @@ export function NavBar() {
             <a
               href="#contact-us"
               className="mobile-a-item2"
-              onClick={navigationHideNavBar}
+              onClick={toggleMenu}
             >
               تواصل معنا
             </a>
@@ -81,7 +58,7 @@ export function NavBar() {
             className="menu-icon"
             src={menuIcon}
             alt="menu"
-            onClick={showMobileNav}
+            onClick={toggleMenu}
           />
 
           <ul className="desktop-ul" dir="rtl">

@@ -139,6 +139,9 @@ function AboutCard({
               padding: "0.2rem 1.5rem",
               backgroundColor: "rgba(27, 79, 216, 0.2)",
               borderRadius: "10px",
+              animationName: "slideOut",
+              animationDuration: "1s",
+              animationFillMode: "forwards"
             }}
           >
             <h6
