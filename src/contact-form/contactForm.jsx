@@ -424,9 +424,8 @@ const SERVICES = [
 ];
 
 const TIME_SLOTS = [
-  "05:00 م", "05:30 م", "06:00 م", "06:30 م",
-  "07:00 م", "07:30 م", "08:00 م", "08:30 م",
-  "09:00 م", "09:30 م", "10:00 م",
+  "04:00 م", "05:00 م", "06:00 م", "07:00 م",
+  "08:00 م",
 ];
 
 const GENDERS = [
@@ -713,7 +712,7 @@ const validate = () => {
                             }
                             onSelect={handleDateSelect}
                             disabled={[
-                              { dayOfWeek: [5] },
+                              { dayOfWeek: [4] },
                               { before: new Date() },
                             ]}
                             modifiersClassNames={{

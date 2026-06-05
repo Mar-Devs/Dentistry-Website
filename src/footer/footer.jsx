@@ -86,12 +86,12 @@ export function Footer() {
             </div>
             <div className="hours-list">
               <div className="hours-row">
-                <span className="hours-day">السبت – الخميس</span>
-                <span className="hours-time">٥ مساءً – ١٠ مساءً</span>
+                <span className="hours-day">الجمعة – الاربعاء</span>
+                <span className="hours-time">٤ مساءً – ٩ مساءً</span>
               </div>
               <hr className="hours-divider" />
               <div className="hours-row">
-                <span className="hours-day">الجمعة</span>
+                <span className="hours-day">الخميس</span>
                 <span className="hours-closed">مغلق</span>
               </div>
             </div>
