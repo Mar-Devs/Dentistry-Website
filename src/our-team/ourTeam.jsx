@@ -1,4 +1,5 @@
 import maleProfile from "../assests/male-profile.jpg";
+import femaleProfile from "../assests/female no-profile.jpeg";
 import "./ourTeam.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,7 +11,10 @@ import arrowUpIcon from "../assests/arrow-up.svg";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function OurTeam() {
-  const certifcates1 = ["شهادت طب اسنان جامعة الكوفه"];
+  const certifcates1 = [
+    "شهادت طب اسنان جامعة الكوفه",
+    "شهادة من وزارة الصحة بفرع صناعة الأسنان",
+  ];
   const certifcates2 = ["شهادت طب اسنان جامعة الكوفه"];
   const container = useRef();
   useGSAP(() => {
@@ -42,22 +46,24 @@ export function OurTeam() {
             <AboutCard
               drNameDiv="humam"
               drName="دكتور همام الاسدي"
-              drAbout="متخصص زرع"
+              drAbout="صناعة اسنان"
               practicingSince="يمارس منذ 2018"
               certifcates={certifcates1}
               str1="doc-a"
               str2="doc-a-img"
               str3="doc-a-div"
+              profileImg={maleProfile}
             />
             <AboutCard
               drNameDiv="sarah"
               drName="دكتوره ساره علي"
-              drAbout="متخصصة تقويم"
+              drAbout="قشور خزفيه"
               practicingSince="تمارس منذ 2018"
               certifcates={certifcates2}
               str1="doc-b"
               str2="doc-b-img"
               str3="doc-b-div"
+              profileImg={femaleProfile}
             />
           </div>
         </div>
@@ -74,6 +80,7 @@ function AboutCard({
   str1,
   str2,
   str3,
+  profileImg,
 }) {
   const [open, setOpen] = useState(false);
 
@@ -106,18 +113,22 @@ function AboutCard({
       <div className="card">
         <div className="card-top-and-bottom">
           <div className="card-top">
-            <img src={maleProfile} alt="" />
+            <img src={profileImg} alt="" />
           </div>
           <div className="card-bottom">
             <h6 dir="rtl">{drName}</h6>
             <p dir="rtl">{drAbout}</p>
             <div className="practice-and-more">
-              <button style={{
+              <button
+                style={{
                   backgroundColor: "rgba(255, 255, 255, 0)",
-                  border: "none"
-              }} className={str1} onClick={certDisplay}>
+                  border: "none",
+                }}
+                className={str1}
+                onClick={certDisplay}
+              >
                 <img
-                style={{height: "2rem"}}
+                  style={{ height: "2rem" }}
                   className={str2}
                   src={arrowDownwardIcon}
                   alt="downward-arrow"
@@ -141,7 +152,7 @@ function AboutCard({
               borderRadius: "10px",
               animationName: "slideOut",
               animationDuration: "1s",
-              animationFillMode: "forwards"
+              animationFillMode: "forwards",
             }}
           >
             <h6
@@ -156,7 +167,11 @@ function AboutCard({
             </h6>
             <ul>
               {certifcates.map((certifcation) => (
-                <li dir="rtl" key={certifcation}>
+                <li
+                  style={{ marginBottom: "1rem" }}
+                  dir="rtl"
+                  key={certifcation}
+                >
                   {certifcation}
                 </li>
               ))}
