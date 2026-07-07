@@ -91,6 +91,22 @@
   }
 }
 
+@keyframes shake {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+#moving-denture {
+  animation-name: shake;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
 .service-display p {
   font-weight: 700;
 }
@@ -108,7 +124,8 @@
 }
 
 .services {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -136,6 +153,9 @@
 
 @media (max-width: 1200px) {
   .services {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
   }
 }

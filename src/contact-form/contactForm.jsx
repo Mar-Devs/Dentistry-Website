@@ -416,10 +416,14 @@ const TRUST_ITEMS = [
 /* ─── Services ─── */
 const SERVICES = [
   { value: "whitening", label: "تبييض الأسنان" },
+  { value: "mobileDentures", label: "تركيبة اسنان - متحركه"},
+  { value: "dentures", label: "تركيبة اسنان - ثابته"},
+  { value: "toothFilling", label: "حشوة اسنان - اعتياديه"},
+  { value: "rootCanal", label: "حشوة اسنان - جذريه"},
   { value: "braces", label: "تقويم الأسنان" },
   { value: "implant", label: "زراعة الأسنان" },
   { value: "cleaning", label: "تنظيف الأسنان" },
-  { value: "cosmetic", label: "طب الأسنان التجميلي" },
+  { value: "extraction", label: "قلع اسنان"},
   { value: "checkup", label: "كشف وفحص عام" },
 ];
 

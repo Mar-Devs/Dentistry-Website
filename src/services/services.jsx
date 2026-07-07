@@ -4,6 +4,10 @@ import denture from "../assests/denture.png";
 import toothFilling from "../assests/tooth-filling.png";
 import toothExtraction from "../assests/tooth-extraction.png";
 import braces from "../assests/braces.png";
+import cleaning from "../assests/tooth-cleaning.png";
+import implant from "../assests/implant.png";
+import whitening from "../assests/tooth-whitening (1).png";
+import rootCanal from "../assests/root-canal.png";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -37,23 +41,57 @@ export function Services() {
         <div className="services">
           <Service
             servicePhoto={denture}
-            serviceName="تركيبة اسنان"
+            serviceName="تركيبة اسنان - ثابته"
             serviceDescription="حشوة أسنان متقنة تعيد لابتسامتك جمالها الطبيعي وتحمي أسنانك لسنوات بثقة وراحة."
+            animationID=""
+          />
+          <Service
+            servicePhoto={denture}
+            serviceName="تركيبة اسنان - متحركه"
+            serviceDescription="حشوة أسنان متقنة تعيد لابتسامتك جمالها الطبيعي وتحمي أسنانك لسنوات بثقة وراحة."
+            animationID="moving-denture"
+          />
+          <Service
+            servicePhoto={cleaning}
+            serviceName="تنظيف الاسنان "
+            serviceDescription="حشوة أسنان متقنة تعيد لابتسامتك جمالها الطبيعي وتحمي أسنانك لسنوات بثقة وراحة."
+            animationID=""
+          />
+          <Service
+            servicePhoto={whitening}
+            serviceName="تبييض الاسنان"
+            serviceDescription="حشوة أسنان متقنة تعيد لابتسامتك جمالها الطبيعي وتحمي أسنانك لسنوات بثقة وراحة."
+            animationID=""
           />
           <Service
             servicePhoto={toothFilling}
-            serviceName="حشوة اسنان"
+            serviceName="حشوة اسنان - اعتياديه"
+            serviceDescription="حشوة أسنان متقنة تعيد لابتسامتك جمالها الطبيعي وتحمي أسنانك لسنوات بثقة وراحة."
+            animationID=""
+          />
+           <Service
+            servicePhoto={rootCanal}
+            serviceName="حشوة اسنان - جذريه"
+            serviceDescription="حشوة أسنان متقنة تعيد لابتسامتك جمالها الطبيعي وتحمي أسنانك لسنوات بثقة وراحة."
+            animationID=""
+          />
+          <Service
+            servicePhoto={implant}
+            serviceName="زراعة الاسنان"
             serviceDescription="أطقم أسنان مصمّمة بدقة تمنحك ابتسامة طبيعية وثقة كاملة وراحة يومية."
+            animationID=""
           />
           <Service
             servicePhoto={toothExtraction}
             serviceName="قلع اسنان"
             serviceDescription="خلع أسنان آمن وسلس يضمن راحتك ويحافظ على صحة فمك بخبرة واهتمام."
+            animationID=""
           />
           <Service
             servicePhoto={braces}
             serviceName="تقويم اسنان"
             serviceDescription="تقويم أسنان متطوّر ينسّق ابتسامتك بدقّة ويمنحك مظهراً واثقاً يدوم."
+            animationID=""
           />
         </div>
         {/* <div className="button">
@@ -67,12 +105,22 @@ export function Services() {
   );
 }
 
-export function Service({ servicePhoto, serviceName, serviceDescription }) {
+export function Service({
+  servicePhoto,
+  serviceName,
+  serviceDescription,
+  animationID,
+}) {
   return (
     <>
       <div className="service">
         <div className="service-display">
-          <img className="service-img" src={servicePhoto} alt="" />
+          <img
+            id={animationID}
+            className="service-img"
+            src={servicePhoto}
+            alt=""
+          />
           <p dir="rtl">{serviceName}</p>
           {/* <button>
             <img className="arrow-img" src={arrowRight} alt="" />

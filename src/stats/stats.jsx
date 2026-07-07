@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
  
 const stats = [
-  { num: 500, suffix: "+", label: "مريض راضٍ", icon: "" },
-  { num: 5, suffix: "+", label: "سنوات خبرة", icon: "" },
+  { num: 1200, suffix: "+", label: "مريض راضٍ", icon: "" },
+  { num: 8, suffix: "+", label: "سنوات خبرة", icon: "" },
   { num: 4.9, suffix: "", label: "تقييم المرضى", icon: "" },
 ];
  

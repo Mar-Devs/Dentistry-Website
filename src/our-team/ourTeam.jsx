@@ -1,5 +1,6 @@
 import maleProfile from "../assests/male-profile.jpg";
 import femaleProfile from "../assests/female no-profile.jpeg";
+import humam from "../assests/humam.jpg"
 import "./ourTeam.css";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,10 +13,13 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 export function OurTeam() {
   const certifcates1 = [
-    "شهادت طب اسنان جامعة الكوفه",
-    "شهادة من وزارة الصحة بفرع صناعة الأسنان",
+    "باكلوريوس جرلحة الفم و الاسنان",
+    "سيرتفكت من وزارة الصحة بفرع صناعة الأسنان",
   ];
-  const certifcates2 = ["شهادت طب اسنان جامعة الكوفه"];
+  const certifcates2 = [
+    "باكلوريوس جرلحة الفم و الاسنان",
+    "سيرتفكت تجميل الاسنان",
+  ];
   const container = useRef();
   useGSAP(() => {
     gsap.from("#our-team", {
@@ -52,11 +56,11 @@ export function OurTeam() {
               str1="doc-a"
               str2="doc-a-img"
               str3="doc-a-div"
-              profileImg={maleProfile}
+              profileImg={humam}
             />
             <AboutCard
               drNameDiv="sarah"
-              drName="دكتوره ساره علي"
+              drName="دكتورة ساره علي"
               drAbout="قشور خزفيه"
               practicingSince="تمارس منذ 2018"
               certifcates={certifcates2}
