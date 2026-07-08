@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+@theme {
+  --color-inputBkg: gb(239, 246, 255);
+  --color-inputBorder: rgb(191, 219, 254);
+}

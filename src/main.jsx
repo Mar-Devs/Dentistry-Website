@@ -7,6 +7,7 @@ import { OurTeam } from "./our-team/ourTeam.jsx";
 import { Services } from "./services/services.jsx";
 import { DentalBooking } from "./contact-form/contactForm.jsx";
 import { Footer } from "./footer/footer.jsx";
+import { ContactForm } from "./contact-form/contactFormReworked.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,7 +16,8 @@ createRoot(document.getElementById("root")).render(
     <StatsSection/>
     <Services />
     <OurTeam />
-    <DentalBooking/>
+    <ContactForm/>
+    {/* <DentalBooking/> */}
     <Footer/>
   </StrictMode>,
 );

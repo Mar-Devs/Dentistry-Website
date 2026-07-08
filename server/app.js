@@ -4,11 +4,11 @@ import submitAppoitment from "./controllers/validators/contactFormValidator.js"
 
 const app = express();
 
-app.get("/trying", (req, res) => {
+app.get("/api", (req, res) => {
   res.send("Hello World");
 });
 
-app.post("/submission",submitAppoitment)
+// app.post("/submission",submitAppoitment)
 
 const PORT = 5173
 
